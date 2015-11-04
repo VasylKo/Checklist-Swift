@@ -58,7 +58,7 @@ class ChecklistViewController: UITableViewController {
     
     //MARK: - Table View data source protocol
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return items.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -66,11 +66,8 @@ class ChecklistViewController: UITableViewController {
         
             let item = items[indexPath.row]
             
-            //Get label
-            let label = cell.viewWithTag(1000) as! UILabel
-            label.text = item.text
-            
-            configureCheckmarkForCell(cell, indexPath: indexPath)
+            configurateTextForCell(cell, withChecklistItem: item)
+            configureCheckmarkForCell(cell, withChecklistItem: item)
             
             return cell
     }
@@ -81,22 +78,26 @@ class ChecklistViewController: UITableViewController {
         
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
             let item = items[indexPath.row]
-            item.checked = !item.checked
-            configureCheckmarkForCell(cell, indexPath: indexPath)
+            item.toggleChecked()
+            configureCheckmarkForCell(cell, withChecklistItem: item)
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-    func configureCheckmarkForCell(cell: UITableViewCell, indexPath: NSIndexPath) {
+    //MAKR: - Configurate cells
+    func configureCheckmarkForCell(cell: UITableViewCell, withChecklistItem item: ChecklistItem) {
          
-            let item = items[indexPath.row]
-            
             if item.checked {
                 cell.accessoryType = .Checkmark
             } else {
                 cell.accessoryType = .None
             }
+    }
+    
+    func configurateTextForCell(cell: UITableViewCell, withChecklistItem item: ChecklistItem) {
+                    let label = cell.viewWithTag(1000) as! UILabel
+                    label.text = item.text
     }
 
 
