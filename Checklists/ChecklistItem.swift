@@ -1,0 +1,14 @@
+//
+//  ChecklistItem.swift
+//  Checklists
+//
+//  Created by Vasyl Kotsiuba on 11/4/15.
+//  Copyright © 2015 Vasyl Koysiuba. All rights reserved.
+//
+
+import Foundation
+
+class ChecklistItem {
+    var text = ""
+    var checked = false
+}
