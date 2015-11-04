@@ -72,7 +72,13 @@ class ChecklistViewController: UITableViewController {
             return cell
     }
     
-    //MARK: - Table View data delegate
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+                items.removeAtIndex(indexPath.row)
+                
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+    }
+    
+    //MARK: - Table View delegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -99,10 +105,12 @@ class ChecklistViewController: UITableViewController {
                     let label = cell.viewWithTag(1000) as! UILabel
                     label.text = item.text
     }
+    
+    
 
     //MAKR: - Actions
     
-    @IBAction func addIten() {
+    func addIten() {
                         
                         let newRowIndex = items.count
                         let item = ChecklistItem()
