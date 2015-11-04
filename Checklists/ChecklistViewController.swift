@@ -100,6 +100,21 @@ class ChecklistViewController: UITableViewController {
                     label.text = item.text
     }
 
+    //MAKR: - Actions
+    
+    @IBAction func addIten() {
+                        
+                        let newRowIndex = items.count
+                        let item = ChecklistItem()
+                        item.text = "I am a new row"
+                        item.checked = false
+                        
+                        items.append(item)
+                        
+                        let indexPath = NSIndexPath(forItem: newRowIndex, inSection: 0)
+                        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+    }
+
 
 }
 
