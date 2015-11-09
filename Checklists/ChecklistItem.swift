@@ -21,7 +21,11 @@ class ChecklistItem {
         print("Git test")
     }
     
-    func gitTestNewBranchInDeveloper() {
+    func gitTestNewBranch() {
+        print("Git test")
+    }
+    
+    func secndGitTestNewBranch() {
         print("Git test")
     }
 }
