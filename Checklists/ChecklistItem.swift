@@ -20,6 +20,10 @@ class ChecklistItem {
     func gitTest() {
         print("Git test")
     }
+    
+    func gitTestNewBranchInDeveloper() {
+        print("Git test")
+    }
 }
 
 
