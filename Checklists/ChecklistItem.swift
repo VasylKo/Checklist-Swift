@@ -15,4 +15,11 @@ class ChecklistItem {
     func toggleChecked() {
         checked = !checked
     }
+    
+    //git test
+    func gitTest() {
+        print("Git test")
+    }
 }
+
+
