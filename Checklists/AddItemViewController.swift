@@ -42,7 +42,7 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
 
     @IBAction func cancel(sender: AnyObject) {
         delegate?.addItemViewControllerDidCancel(self)
-        //dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     
