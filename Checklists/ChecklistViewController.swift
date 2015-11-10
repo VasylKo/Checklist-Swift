@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ChecklistViewController: UITableViewController {
+
+class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
 
     var items: [ChecklistItem]
     
@@ -93,12 +94,14 @@ class ChecklistViewController: UITableViewController {
     
     //MAKR: - Configurate cells
     func configureCheckmarkForCell(cell: UITableViewCell, withChecklistItem item: ChecklistItem) {
-         
-            if item.checked {
-                cell.accessoryType = .Checkmark
-            } else {
-                cell.accessoryType = .None
-            }
+        
+        let label = cell.viewWithTag(1001) as! UILabel
+        
+        if item.checked {
+            label.text = "√"
+        } else {
+            label.text = ""
+        }
     }
     
     func configurateTextForCell(cell: UITableViewCell, withChecklistItem item: ChecklistItem) {
@@ -108,21 +111,41 @@ class ChecklistViewController: UITableViewController {
     
     
 
-    //MAKR: - Actions
-    
-    func addIten() {
-                        
-                        let newRowIndex = items.count
-                        let item = ChecklistItem()
-                        item.text = "I am a new row"
-                        item.checked = false
-                        
-                        items.append(item)
-                        
-                        let indexPath = NSIndexPath(forItem: newRowIndex, inSection: 0)
-                        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+    //MAKR: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        
+        
+        if segue.identifier == "AddItem" {
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let controller = navigationController.topViewController as! AddItemViewController
+            controller.delegate = self
+        } else if segue.identifier == "EditItem" {
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let controller = navigationController.topViewController as! AddItemViewController
+            controller.delegate = self
+            
+            if let indexPath = tableView.indexPathForCell(sender as! UITableViewCell) {
+                controller.itemToEdit = items[indexPath.row]
+            }
+        }
     }
 
+    
+    //MARK: - AddItemViewControllerDelegate
+    func addItemViewController(controller: AddItemViewController, didFinishAddingItem item: ChecklistItem) {
+        let newRowIndex = items.count
+        items.append(item)
+        
+        let indexPath = NSIndexPath(forItem: newRowIndex, inSection: 0)
+        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    func addItemViewControllerDidCancel(controller: AddItemViewController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
 }
 

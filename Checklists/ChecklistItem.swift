@@ -15,6 +15,8 @@ class ChecklistItem {
     func toggleChecked() {
         checked = !checked
     }
+    
+    
 
 }
 
