@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
+class ChecklistViewController: UITableViewController, ItemDetailViewControllerDelegate {
 
     var items: [ChecklistItem]
     
@@ -44,6 +44,9 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         items.append(row4item)
         
         super.init(coder: aDecoder)
+        
+        print("Documnet folder is \(documnetsDirectory())")
+        print("Data file path is \(dataFilePath())")
     }
     
     
@@ -74,9 +77,10 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-                items.removeAtIndex(indexPath.row)
-                
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        items.removeAtIndex(indexPath.row)
+        
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        saveChecklistItems()
     }
     
     //MARK: - Table View delegate
@@ -90,6 +94,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        saveChecklistItems()
     }
     
     //MAKR: - Configurate cells
@@ -118,11 +123,11 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         
         if segue.identifier == "AddItem" {
             let navigationController = segue.destinationViewController as! UINavigationController
-            let controller = navigationController.topViewController as! AddItemViewController
+            let controller = navigationController.topViewController as! ItemDetailViewController
             controller.delegate = self
         } else if segue.identifier == "EditItem" {
             let navigationController = segue.destinationViewController as! UINavigationController
-            let controller = navigationController.topViewController as! AddItemViewController
+            let controller = navigationController.topViewController as! ItemDetailViewController
             controller.delegate = self
             
             if let indexPath = tableView.indexPathForCell(sender as! UITableViewCell) {
@@ -132,8 +137,8 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     }
 
     
-    //MARK: - AddItemViewControllerDelegate
-    func addItemViewController(controller: AddItemViewController, didFinishEditingItem item: ChecklistItem) {
+    //MARK: - ItemDetailViewControllerDelegate
+    func itemDetailViewController(controller: ItemDetailViewController, didFinishEditingItem item: ChecklistItem) {
         if let index = items.indexOf(item) {
             let indexPath = NSIndexPath(forRow: index, inSection: 0);
             
@@ -143,21 +148,41 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         }
         
         dismissViewControllerAnimated(true, completion: nil)
+        saveChecklistItems()
     }
     
-    func addItemViewController(controller: AddItemViewController, didFinishAddingItem item: ChecklistItem) {
+    func itemDetailViewController(controller: ItemDetailViewController, didFinishAddingItem item: ChecklistItem) {
         let newRowIndex = items.count
         items.append(item)
         
         let indexPath = NSIndexPath(forItem: newRowIndex, inSection: 0)
         tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         dismissViewControllerAnimated(true, completion: nil)
+        saveChecklistItems()
     }
     
     
-    func addItemViewControllerDidCancel(controller: AddItemViewController) {
+    func itemDetailViewControllerDidCancel(controller: ItemDetailViewController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    //MARK: - Save file to file system
+    func documnetsDirectory() -> String {
+        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        
+        return path[0]
+    }
+    
+    func dataFilePath () -> String {
+        return (documnetsDirectory() as NSString).stringByAppendingPathComponent("Checklists.plist")
+    }
 
+    func saveChecklistItems() {
+        let data = NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWithMutableData: data)
+        archiver.encodeObject(items, forKey: "CheckListItems")
+        archiver.finishEncoding()
+        data.writeToFile(dataFilePath(), atomically: true)
+    }
 }
 

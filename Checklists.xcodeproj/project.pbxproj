@@ -13,19 +13,19 @@
 		510BB5351BE7C77E00E47B26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 510BB5341BE7C77E00E47B26 /* Assets.xcassets */; };
 		510BB5381BE7C77E00E47B26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 510BB5361BE7C77E00E47B26 /* LaunchScreen.storyboard */; };
 		510BB5421BEA837400E47B26 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BB5411BEA837400E47B26 /* ChecklistItem.swift */; };
-		510BB5441BEA960400E47B26 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BB5431BEA960400E47B26 /* AddItemViewController.swift */; };
+		510BB5441BEA960400E47B26 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BB5431BEA960400E47B26 /* ItemDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		510BB52A1BE7C77E00E47B26 /* Checklists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checklists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		510BB52D1BE7C77E00E47B26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		510BB52F1BE7C77E00E47B26 /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
+		510BB52F1BE7C77E00E47B26 /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ChecklistViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		510BB5321BE7C77E00E47B26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		510BB5341BE7C77E00E47B26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		510BB5371BE7C77E00E47B26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		510BB5391BE7C77E00E47B26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		510BB5411BEA837400E47B26 /* ChecklistItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
-		510BB5431BEA960400E47B26 /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		510BB5431BEA960400E47B26 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ItemDetailViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +61,7 @@
 				510BB52D1BE7C77E00E47B26 /* AppDelegate.swift */,
 				510BB52F1BE7C77E00E47B26 /* ChecklistViewController.swift */,
 				510BB5411BEA837400E47B26 /* ChecklistItem.swift */,
-				510BB5431BEA960400E47B26 /* AddItemViewController.swift */,
+				510BB5431BEA960400E47B26 /* ItemDetailViewController.swift */,
 				510BB5311BE7C77E00E47B26 /* Main.storyboard */,
 				510BB5341BE7C77E00E47B26 /* Assets.xcassets */,
 				510BB5361BE7C77E00E47B26 /* LaunchScreen.storyboard */,
@@ -142,7 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				510BB5301BE7C77E00E47B26 /* ChecklistViewController.swift in Sources */,
-				510BB5441BEA960400E47B26 /* AddItemViewController.swift in Sources */,
+				510BB5441BEA960400E47B26 /* ItemDetailViewController.swift in Sources */,
 				510BB5421BEA837400E47B26 /* ChecklistItem.swift in Sources */,
 				510BB52E1BE7C77E00E47B26 /* AppDelegate.swift in Sources */,
 			);
@@ -292,6 +292,7 @@
 				510BB53E1BE7C77E00E47B26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
