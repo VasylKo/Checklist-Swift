@@ -17,9 +17,9 @@ class ChecklistItem: NSObject, NSCoding {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init()
         text = aDecoder.decodeObjectForKey("Text") as! String
         checked = aDecoder.decodeBoolForKey("Checked")
+        super.init()
         
     }
     
@@ -29,7 +29,7 @@ class ChecklistItem: NSObject, NSCoding {
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(text, forKey: "Text")
-        aCoder.encodeObject(checked, forKey: "Checked")
+        aCoder.encodeBool(checked, forKey: "Checked")
     }
     
 
