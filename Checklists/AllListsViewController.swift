@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AllListsViewController: UITableViewController {
+class AllListsViewController: UITableViewController, ListDetailViewControllerDelegate {
 
     var lists: [Checklist]
     //OR: var lists: Array<Checklist>
@@ -40,7 +40,7 @@ class AllListsViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 3
+        return lists.count
     }
 
     
@@ -48,14 +48,34 @@ class AllListsViewController: UITableViewController {
         //let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
         let cell = cellForTableView(tableView)
-        cell.textLabel!.text = "List \(indexPath.row)"
+        
+        let checklist = lists[indexPath.row]
+        cell.textLabel!.text = checklist.name
+        cell.accessoryType = .DetailDisclosureButton
 
         return cell
     }
     
      // MARK: - Table view delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("ShowChecklist", sender: nil)
+        let checklist = lists[indexPath.row]
+        performSegueWithIdentifier("ShowChecklist", sender: checklist)
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        lists.removeAtIndex(indexPath.row)
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+    }
+    
+    override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+        let navigationControllet = storyboard?.instantiateViewControllerWithIdentifier("ListDetailNavigationController") as! UINavigationController
+        let controllet = navigationControllet.topViewController as! ListDetailViewController
+        controllet.delegate = self
+        
+        let checklist = lists[indexPath.row]
+        controllet.checklistToEdit = checklist
+        
+        presentViewController(navigationControllet, animated: true, completion: nil)
     }
     
     //MARK: Helper methods
@@ -68,5 +88,42 @@ class AllListsViewController: UITableViewController {
             return UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowChecklist" {
+            let controller = segue.destinationViewController as! ChecklistViewController
+            controller.checklist = sender as! Checklist
+        } else if segue.identifier == "AddChecklist" {
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let controller = navigationController.topViewController as! ListDetailViewController
+            controller.delegate = self
+            controller.checklistToEdit = nil
+        }
+    }
+    
+    //MARK: List details view controlelr delegate
+    func listDetailViewControllerDidCancel(controller: ListDetailViewController) {
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func listDetailViewController(controller: ListDetailViewController, didFinishAddingChecklist checklist: Checklist) {
+        let newRowIndex = lists.count
+        lists.append(checklist)
+        let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func listDetailViewController(controller: ListDetailViewController, didFinishEditingChecklist checklist: Checklist) {
+        
+        if let index = lists.indexOf(checklist) {
+            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+                if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+                    cell.textLabel!.text = checklist.name
+                }
+        }
+        dismissViewControllerAnimated(true, completion: nil) }
 
 }
