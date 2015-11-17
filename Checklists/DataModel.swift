@@ -57,11 +57,13 @@ class DataModel {
                 lists = unarchiver.decodeObjectForKey("CheckLists") as! [Checklist]
                 unarchiver.finishDecoding()
                 
+                sortChecklists()
             }
         }
         
     }
     
+    //MARK: - Helper methods
     func registerDEfaults() {
         let dic = ["ChecklistIndex" : -1,
                     "FirstTime" : true]
@@ -78,6 +80,12 @@ class DataModel {
             userDefaults.setBool(false, forKey: "FirstTime")
             userDefaults.synchronize()
         }
+    }
+    
+    func sortChecklists() {
+        lists.sortInPlace ({ (checklist1, checklist2) -> Bool in
+            checklist1.name.localizedStandardCompare(checklist2.name) == .OrderedAscending
+        })
     }
     
 }
