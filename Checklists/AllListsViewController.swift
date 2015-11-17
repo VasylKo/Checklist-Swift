@@ -25,7 +25,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         
         let index = dataModel.indexOfSelectedChecklist
         
-        if index == 0 && index < dataModel.lists.count {
+        if index >= 0 && index < dataModel.lists.count {
             let checklist = dataModel.lists[index]
             performSegueWithIdentifier("ShowChecklist", sender: checklist)
         }
