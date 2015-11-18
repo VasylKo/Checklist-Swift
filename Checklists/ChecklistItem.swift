@@ -23,7 +23,9 @@ class ChecklistItem: NSObject, NSCoding {
         
     }
     
-    override  init() {
+    init(text: String,  checked: Bool) {
+        self.text = text
+        self.checked = checked
         super.init()
     }
     

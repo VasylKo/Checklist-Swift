@@ -5,6 +5,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--(Name of the Checklist)-->
         <scene sceneID="voO-0a-5Mc">
@@ -131,34 +136,36 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHb-tH-90G">
-                                                    <rect key="frame" x="44" y="0.0" width="523" height="43"/>
+                                                    <rect key="frame" x="8" y="0.0" width="507" height="43"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kfc-o3-aex">
-                                                    <rect key="frame" x="0.0" y="4" width="36" height="36"/>
+                                                    <rect key="frame" x="523" y="4" width="36" height="36"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="36" id="etE-wo-U26"/>
-                                                        <constraint firstAttribute="width" constant="36" id="qhk-yg-5UN"/>
+                                                        <constraint firstAttribute="height" constant="36" id="GSk-yK-TsO"/>
+                                                        <constraint firstAttribute="width" constant="36" id="JTS-Zc-VH5"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <animations/>
                                             <constraints>
+                                                <constraint firstItem="Kfc-o3-aex" firstAttribute="centerY" secondItem="hni-JZ-IL9" secondAttribute="centerY" id="8H6-K2-sRf"/>
                                                 <constraint firstAttribute="bottom" secondItem="FHb-tH-90G" secondAttribute="bottom" id="FT1-xX-3aa"/>
                                                 <constraint firstItem="FHb-tH-90G" firstAttribute="leading" secondItem="hni-JZ-IL9" secondAttribute="leading" constant="8" id="NQ0-fE-Pcp"/>
                                                 <constraint firstAttribute="trailing" secondItem="FHb-tH-90G" secondAttribute="trailing" id="PrG-B9-4b4"/>
                                                 <constraint firstItem="FHb-tH-90G" firstAttribute="top" secondItem="hni-JZ-IL9" secondAttribute="top" id="Vx8-ow-GbH"/>
-                                                <constraint firstItem="Kfc-o3-aex" firstAttribute="centerY" secondItem="hni-JZ-IL9" secondAttribute="centerY" id="iA6-Q8-6JZ"/>
-                                                <constraint firstItem="Kfc-o3-aex" firstAttribute="leading" secondItem="hni-JZ-IL9" secondAttribute="leading" id="vGK-Ck-9bi"/>
-                                                <constraint firstItem="FHb-tH-90G" firstAttribute="leading" secondItem="Kfc-o3-aex" secondAttribute="trailing" constant="8" id="y1o-vb-BZH"/>
+                                                <constraint firstItem="Kfc-o3-aex" firstAttribute="leading" secondItem="FHb-tH-90G" secondAttribute="trailing" constant="8" id="cJl-m8-cQa"/>
+                                                <constraint firstAttribute="trailing" secondItem="Kfc-o3-aex" secondAttribute="trailing" constant="8" id="g03-h1-9x5"/>
+                                                <constraint firstItem="FHb-tH-90G" firstAttribute="leading" secondItem="hni-JZ-IL9" secondAttribute="leading" constant="8" id="zZG-zs-4Zw"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="NQ0-fE-Pcp"/>
+                                                    <exclude reference="PrG-B9-4b4"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -398,4 +405,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="l4m-wV-cWv"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.015686274509803921" green="0.66274509803921566" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
 </document>
