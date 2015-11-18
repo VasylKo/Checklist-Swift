@@ -121,18 +121,61 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="28X-6I-1kx">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="3uz-Qf-MxZ">
+                                        <rect key="frame" x="0.0" y="179" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3uz-Qf-MxZ" id="hni-JZ-IL9">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHb-tH-90G">
+                                                    <rect key="frame" x="44" y="0.0" width="523" height="43"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kfc-o3-aex">
+                                                    <rect key="frame" x="0.0" y="4" width="36" height="36"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="etE-wo-U26"/>
+                                                        <constraint firstAttribute="width" constant="36" id="qhk-yg-5UN"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="FHb-tH-90G" secondAttribute="bottom" id="FT1-xX-3aa"/>
+                                                <constraint firstItem="FHb-tH-90G" firstAttribute="leading" secondItem="hni-JZ-IL9" secondAttribute="leading" constant="8" id="NQ0-fE-Pcp"/>
+                                                <constraint firstAttribute="trailing" secondItem="FHb-tH-90G" secondAttribute="trailing" id="PrG-B9-4b4"/>
+                                                <constraint firstItem="FHb-tH-90G" firstAttribute="top" secondItem="hni-JZ-IL9" secondAttribute="top" id="Vx8-ow-GbH"/>
+                                                <constraint firstItem="Kfc-o3-aex" firstAttribute="centerY" secondItem="hni-JZ-IL9" secondAttribute="centerY" id="iA6-Q8-6JZ"/>
+                                                <constraint firstItem="Kfc-o3-aex" firstAttribute="leading" secondItem="hni-JZ-IL9" secondAttribute="leading" id="vGK-Ck-9bi"/>
+                                                <constraint firstItem="FHb-tH-90G" firstAttribute="leading" secondItem="Kfc-o3-aex" secondAttribute="trailing" constant="8" id="y1o-vb-BZH"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="NQ0-fE-Pcp"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <segue destination="5PP-of-Bds" kind="show" identifier="PickIcon" id="5Xh-6b-dhc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="fN9-9b-G8G" id="mv8-8u-elP"/>
                             <outlet property="delegate" destination="fN9-9b-G8G" id="8mI-9D-VGl"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="bQr-f2-TQf"/>
-                        <barButtonItem title="Item" id="8yt-Dl-fna"/>
-                        <barButtonItem title="Item" id="wYo-NM-stn"/>
-                        <barButtonItem title="Item" id="rc3-OC-zcS"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Add Checklist" id="r44-Rj-dC7">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gtO-Qx-Fwx">
                             <connections>
@@ -148,12 +191,55 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="doneBarButton" destination="mw1-3W-Zl6" id="038-WP-TGs"/>
+                        <outlet property="iconImageView" destination="Kfc-o3-aex" id="V3a-33-fAa"/>
                         <outlet property="textField" destination="d56-vT-6fa" id="tTb-1Q-ZTB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T7k-eB-wSN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1199" y="1103"/>
+        </scene>
+        <!--Choose Icon-->
+        <scene sceneID="Kde-xn-rps">
+            <objects>
+                <tableViewController id="5PP-of-Bds" customClass="IconPickerViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="a82-iz-v5S">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IconCell" textLabel="1Q3-h3-TGE" style="IBUITableViewCellStyleDefault" id="pRX-CJ-MXD">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pRX-CJ-MXD" id="3fg-22-HyT">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Q3-h3-TGE">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5PP-of-Bds" id="bRp-iV-Elr"/>
+                            <outlet property="delegate" destination="5PP-of-Bds" id="o4s-dK-Cg4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Choose Icon" id="kwv-eX-u80"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G3g-so-xnK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1872" y="1103"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="18b-Fs-eAY">
