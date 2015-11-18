@@ -16,6 +16,7 @@ class IconPickerViewController: UITableViewController {
     weak var delegate: IconPickerViewControllerDelegate?
     let icons = [ "No Icon", "Appointments", "Birthdays", "Chores", "Drinks", "Folder", "Groceries", "Inbox", "Photos", "Trips"]
     
+    //MARK: - Table View data source
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return icons.count
     }
@@ -29,6 +30,11 @@ class IconPickerViewController: UITableViewController {
         cell.imageView!.image = UIImage(named: iconName)
         
         return cell
+    }
+    
+    //MARK: - Table View delegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        delegate?.iconPicker(self, didPickIcon: icons[indexPath.row])
     }
     
 }
