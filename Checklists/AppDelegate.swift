@@ -20,6 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = window!.rootViewController as! UINavigationController
         let controller = navigationController.viewControllers[0] as! AllListsViewController
         controller.dataModel = dataModel
+        
+        //Add local notification support
+        let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
         return true
     }
 
@@ -54,6 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         controller.saveChecklistItems()
 */
         dataModel.saveChecklists()
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        print("Did receive local notification \(notification)")
     }
 
 }

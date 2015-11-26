@@ -24,7 +24,7 @@ class DataModel {
     
     init () {
         loadChecklists()
-        registerDEfaults()
+        registerDefaults()
         handleFirstTime()
     }
     
@@ -64,9 +64,10 @@ class DataModel {
     }
     
     //MARK: - Helper methods
-    func registerDEfaults() {
+    func registerDefaults() {
         let dic = ["ChecklistIndex" : -1,
-                    "FirstTime" : true]
+                    "FirstTime" : true,
+                    "ChecklistItemID": 0]
         NSUserDefaults.standardUserDefaults().registerDefaults(dic)
     }
     
@@ -76,7 +77,6 @@ class DataModel {
             let checklist = Checklist(name: "List")
             lists.append(checklist)
             indexOfSelectedChecklist = 0
-            userDefaults.setInteger(0, forKey: "ChecklistIndex")
             userDefaults.setBool(false, forKey: "FirstTime")
             userDefaults.synchronize()
         }
@@ -86,6 +86,14 @@ class DataModel {
         lists.sortInPlace ({ (checklist1, checklist2) -> Bool in
             checklist1.name.localizedStandardCompare(checklist2.name) == .OrderedAscending
         })
+    }
+    
+    class func nextChecklistItemID() -> Int {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let itemID = userDefaults.integerForKey("ChecklistItemID")
+        userDefaults.setInteger(itemID + 1, forKey: "ChecklistItemID")
+        userDefaults.synchronize()
+        return itemID
     }
     
 }
