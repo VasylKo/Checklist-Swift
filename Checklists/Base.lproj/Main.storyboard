@@ -326,6 +326,9 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Oao-S1-s8s">
                                                     <rect key="frame" x="536" y="6.5" width="51" height="31"/>
                                                     <animations/>
+                                                    <connections>
+                                                        <action selector="shouldRemindToggled:" destination="NWi-wE-J5x" eventType="valueChanged" id="aaW-Kf-rAC"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <animations/>

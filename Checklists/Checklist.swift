@@ -51,5 +51,6 @@ class Checklist: NSObject, NSCoding {
         //OR
         return items.reduce(0) { count, item  in count + (item.checked ? 0 : 1) }
     }
+    
 }
 
