@@ -1,5 +1,6 @@
 # Checklist-Swift (2/4)
-This app is made by me as a second part of Ray Wenderlich book – “The iOS Apprentice Fourth Edition (Beginning iOS Development with Swift 2) Tutorial 2: Checklists”.
+This app is made by me as a second part of Ray Wenderlich book – “The iOS Apprentice Fourth Edition (Beginning iOS Development with Swift 2) Tutorial 2: Checklists”.  
+Part of my [Swift learning progress.](https://github.com/VasylKo/Swift-learning-progress) 
 
 __Tools used:__ xCode 7.1 and swift 2.1.
 
